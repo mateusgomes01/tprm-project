@@ -1,18 +1,12 @@
 <?php 
 	//$_GET is a global array that contains all get requests
-	/*
-	if(isset($_GET['submit'])){//if submit has a value it means that data was sent to the server
-		echo $_GET['email'];
-		echo $_GET['title'];
-		echo $_GET['ingredients'];
-	}*/
 
 	if(isset($_POST['submit'])){//if submit has a value it means that data was sent to the server
 		//check e-mail
 		if(empty($_POST['email'])){
 			echo 'An e-mail is required <br />';
 		} else {
-			//htmlspecialchars converts special chars to HTML equivalent, to avoid XSS (cross site scripting) attaks
+			//htmlspecialchars converts special chars to HTML equivalent, to avoid XSS (cross site scripting) attacks
 			echo htmlspecialchars($_POST['email']);
 		}
 
@@ -30,6 +24,7 @@
 
 
 	}//end of POST check
+	//example of XSS attack
 	//<script>window.location = "http://www.thenetninja.co.uk" </script>
  ?>
 
