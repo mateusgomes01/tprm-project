@@ -8,10 +8,28 @@
 	}*/
 
 	if(isset($_POST['submit'])){//if submit has a value it means that data was sent to the server
-		echo htmlspecialchars($_POST['email']);
-		echo htmlspecialchars($_POST['title']);
-		echo htmlspecialchars($_POST['ingredients']);
-	}
+		//check e-mail
+		if(empty($_POST['email'])){
+			echo 'An e-mail is required <br />';
+		} else {
+			//htmlspecialchars converts special chars to HTML equivalent, to avoid XSS (cross site scripting) attaks
+			echo htmlspecialchars($_POST['email']);
+		}
+
+		if(empty($_POST['title'])){
+			echo 'An title is required <br />';
+		} else {
+			echo htmlspecialchars($_POST['title']);
+		}
+
+		if(empty($_POST['ingredients'])){
+			echo 'At least one ingredient is required <br />';
+		} else {
+			echo htmlspecialchars($_POST['ingredients']);
+		}
+
+
+	}//end of POST check
 	//<script>window.location = "http://www.thenetninja.co.uk" </script>
  ?>
 
