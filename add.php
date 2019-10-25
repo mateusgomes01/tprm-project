@@ -1,5 +1,5 @@
 <?php 
-	//$_GET is a global array that contains all get requests
+	//$_GET, $_POST are global arrays that contains all get/post requests
 
 	$email = $title = $ingredients = "";
 	$erros = array('email'=>'', 'title'=>'', 'ingredients'=>'');
@@ -44,6 +44,14 @@
 			}
 		}
 
+		//array filter checks for a callback function in the array. If all elements in the array are empty/false, array_filter will return false
+		//if the array is filled, it will evaluete to true
+		if(array_filter($erros)){
+			//echo 'there are errors in the form';
+		} else {
+			//echo 'form is valid';
+			header('Location: index.php');
+		}
 
 	}//end of POST check
 	//example of XSS attack
@@ -64,7 +72,7 @@
  				<input type="text" name="title" value="<?php echo htmlspecialchars($title) ?>">
  				<div class="red-text"> <?php echo $erros['title']  ?> </div>
  				<label>Ingredients (comma separated):</label>
- 				<input type="text" name="ingredients" value="<?php htmlspecialchars($ingredients) ?>">
+ 				<input type="text" name="ingredients" value="<?php echo htmlspecialchars($ingredients) ?>">
  				<div class="red-text"> <?php echo $erros['ingredients']  ?> </div>
  				<div class="center">
  					<input type="submit" name="submit" value="submit" class="btn brand z-depth-0">
