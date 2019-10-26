@@ -1,6 +1,8 @@
 <?php 
 	//$_GET, $_POST are global arrays that contains all get/post requests
 
+	include('config/db_connect.php');
+
 	$email = $title = $ingredients = "";
 	$erros = array('email'=>'', 'title'=>'', 'ingredients'=>'');
 
@@ -49,8 +51,25 @@
 		if(array_filter($erros)){
 			//echo 'there are errors in the form';
 		} else {
-			//echo 'form is valid';
-			header('Location: index.php');
+			
+			//mysqli_real_escape_string avoids malicious SQL code to be executed, just like htmlspecialchars()
+			$email = mysqli_real_escape_string($conn, $_POST['email']);
+			$title = mysqli_real_escape_string($conn, $_POST['title']);
+			$ingredients = mysqli_real_escape_string($conn, $_POST['ingredients']);
+
+			// create sql to insert the pizza in the correct table
+			$sql = "INSERT INTO pizzas(title,email,ingredients) VALUES('$title', '$email', '$ingredients')";
+			//echo $title . $email . $ingredients;
+
+			// save to db and check
+			if( mysqli_query($conn, $sql) ){
+				// success			
+				//echo 'form is valid';
+				header('Location: index.php');//relocates ourselves in the index page
+			} else {
+				//error
+				echo 'query error ' . mysqli_error($conn);
+			}
 		}
 
 	}//end of POST check
@@ -75,7 +94,7 @@
  				<input type="text" name="ingredients" value="<?php echo htmlspecialchars($ingredients) ?>">
  				<div class="red-text"> <?php echo $erros['ingredients']  ?> </div>
  				<div class="center">
- 					<input type="submit" name="submit" value="submit" class="btn brand z-depth-0">
+ 					<input type="submit" name="submit" value="submit" class="btn brand z-depth-1">
  				</div>
  			</form>		
  	</section>
