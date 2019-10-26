@@ -10,7 +10,7 @@
 	}
 
 	// write query for all pizzas
-	$sql = 'SELECT title, ingredients, id FROM pizzas';
+	$sql = 'SELECT title, ingredients, id FROM pizzas ORDER BY created_at';
 
 	// make query & get result
 	$result = mysqli_query($conn, $sql);//conection and query are the parameters
@@ -25,13 +25,37 @@
 	//close connection
 	mysqli_close($conn);
 
-	print_r($pizzas);
+	//print_r($pizzas);
 	
  ?>
 
  <!DOCTYPE html>
  <html>
  	<?php include('templates/header.php') ?>
+
+ 	<h4 class="center grey-text">Pizzas!</h4>
+
+ 	<div class="container">
+ 		<div class="row">
+ 			
+ 			<?php foreach($pizzas as $pizza){ ?>
+
+ 				<div class="col s6 md3">
+ 					<div class="card z-depth-1">
+ 						<div class="card-content center">
+ 							<h6><?php echo htmlspecialchars($pizza['title']) ?></h6>
+ 							<div><?php echo htmlspecialchars($pizza['ingredients']) ?></div>
+ 						</div>
+ 						<div class="card-action right-align">
+ 							<a class="brand-text" href="#">more info</a>
+ 						</div>
+ 					</div> 					 					
+ 				</div>
+
+ 			<?php } ?>
+
+ 		</div>
+ 	</div>
 
  	<?php include('templates/footer.php') ?>
  
