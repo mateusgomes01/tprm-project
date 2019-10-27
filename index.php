@@ -38,6 +38,7 @@
 
  				<div class="col s6 md3">
  					<div class="card z-depth-1">
+ 						<img src="img/pizza.svg" class="pizza">
  						<div class="card-content center">
  							<h6><?php echo htmlspecialchars($pizza['title']) ?></h6>
  							<ul>
@@ -54,11 +55,13 @@
 
  			<?php endforeach; ?>
 
+ 			<!-- Example for an endif statement
  			<?php if(count($pizzas) >= 2): ?>
  				<p>there are 2 or more pizzas</p>
  			<?php  else:  ?>
  				<p>there are less than 2 pizzas</p>
  			<?php endif ?>
+ 			-->
 
  		</div>
  	</div>
