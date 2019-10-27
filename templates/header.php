@@ -1,5 +1,5 @@
  <head>
- 	<title>Ninja Pizza</title>
+ 	<title>TPRM</title>
  	<!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <style type="text/css">
@@ -27,7 +27,7 @@
   <body class="grey lighten-4">
   	<nav class="white z-depth-1">
   		<div class="container">
-  			<a href="index.php" class="brand-logo brand-text center">Ninja Pizza</a>
+  			<a href="index.php" class="brand-logo brand-text center">TPRM</a>
   			<ul id="nav-mobile" class="right hide-on-small-and-down">
   				<li><a href="add.php" class="btn brand z-depth-1">Add a Pizza</a></li>
   			</ul>
