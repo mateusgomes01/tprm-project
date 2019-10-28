@@ -1,0 +1,7 @@
+#Sources:
+
+Materialize CSS library:
+https://materializecss.com/
+
+PHP password security hashing:
+https://www.openwall.com/articles/PHP-Users-Passwords
