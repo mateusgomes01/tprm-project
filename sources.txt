@@ -5,3 +5,6 @@ https://materializecss.com/
 
 PHP password security hashing:
 https://www.openwall.com/articles/PHP-Users-Passwords
+
+PHP Brazil about password security:
+https://www.php.net/manual/pt_BR/faq.passwords.php
