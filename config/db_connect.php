@@ -2,7 +2,7 @@
 
 	// MySQLi or PDO - MySQL improved or PHP Data Objects
 	//connect to database
-	$conn = mysqli_connect('localhost','shaun','test1234','ninja_pizza');
+	$conn = mysqli_connect('localhost','shaun','test1234','tprm');
 
 	//check connection
 	if(!$conn){
