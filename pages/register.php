@@ -73,7 +73,7 @@
 			if( mysqli_query($conn, $sql) ){
 				// success			
 				//echo 'form is valid';
-				header('Location: users.php');//relocates ourselves in the users page
+				header('Location: login.php');//relocates ourselves in the users page
 			} else {
 				//error
 				echo 'query error ' . mysqli_error($conn);
@@ -117,6 +117,6 @@
  			</form>		
  	</section>	
  
-
  	<?php include('../templates/footer.php') ?> 
+
  </html>

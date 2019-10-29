@@ -39,15 +39,15 @@
   	<nav class="white z-depth-1">
   		<div class="container">
   			<a href="login.php" class="brand-logo brand-text center">TPRM</a>
-        <!--<?php if(isset($users)){ ?>-->
+        <!--<?php /*if(isset($users)){*/ ?>-->
     			<ul id="nav-mobile" class="right hide-on-small-and-down">
     				<li><a href="register.php" class="btn brand z-depth-1">Register</a></li>
     			</ul>
-        <!--<?php } else if(isset($clients)){ ?>
+        <!--<?php /*} else if(isset($clients)){*/ ?>
           <ul id="nav-mobile" class="right hide-on-small-and-down">
             <li><a href="register.php" class="btn brand z-depth-1">Register</a></li>
           </ul>
-        <?php } ?>-->
+        <?php /*}*/ ?>-->
 
   		</div>
   	</nav>

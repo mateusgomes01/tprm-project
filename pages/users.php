@@ -3,7 +3,7 @@
 	include('../config/db_connect.php');
 
 	// write query for all pizzas
-	$sql = 'SELECT email FROM users'; //ORDER BY created_at';
+	$sql = 'SELECT * FROM users'; //ORDER BY created_at';
 
 	// make query & get result
 	$result = mysqli_query($conn, $sql);//conection and query are the parameters
@@ -40,7 +40,7 @@
 
  				<div class="col s6 md3">
  					<div class="card z-depth-1">
- 						<img src="../img/pizza.svg" class="pizza">
+ 						<img src="../img/boy.svg" class="pizza">
  						<div class="card-content center">
  							<h6><?php echo htmlspecialchars($user['email']) ?></h6>
  							<!--
@@ -52,7 +52,7 @@
  							-->
  						</div>
  						<div class="card-action right-align">
- 							<a class="brand-text" href="#">More info</a>
+ 							<a class="brand-text" href="../details.php?id=<?php echo $user['id'] ?>">More info</a>
  						</div>
  					</div> 					 					
  				</div>
