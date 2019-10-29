@@ -1,6 +1,6 @@
 <?php 
 
-	include('config/db_connect.php');
+	include('../config/db_connect.php');
 
 	$email = $pass = "";
 	$erros = array('email'=>'', 'pass'=>'');
@@ -52,14 +52,14 @@
 
 
 			// create sql to insert the user in the correct table
-			$sql = "INSERT INTO users(email,hashedPass) VALUES('$email', '$hashedPass')";
+			$sql = "INSERT INTO users(email,pass) VALUES('$email', '$hashedPass')";
 			//echo $title . $email . $ingredients;
 
 			// save to db and check
 			if( mysqli_query($conn, $sql) ){
 				// success			
 				//echo 'form is valid';
-				header('Location: index.php');//relocates ourselves in the index page
+				header('Location: login.php');//relocates ourselves in the index page
 			} else {
 				//error
 				echo 'query error ' . mysqli_error($conn);
@@ -71,10 +71,7 @@
 
  <!DOCTYPE html>
  <html>
- <head>
- 	<title> 	</title>
- </head>
- <body>
+ 	<?php include('../templates/header.php') ?>
  	<!--
  	an alternative form
 
@@ -95,7 +92,7 @@
  				<input type="text" name="email" value="<?php echo htmlspecialchars($email) ?>">
  				<div class="red-text"> <?php echo $erros['email']  ?> </div>
  				<label>Password:</label>
- 				<input type="text" name="pass" value="<?php echo htmlspecialchars($pass) ?>">
+ 				<input type="password" name="pass" value="<?php echo htmlspecialchars($pass) ?>" autocomplete="off">
  				<div class="red-text"> <?php echo $erros['pass']  ?> </div>
  				<div class="center">
  					<input type="submit" name="submit" value="submit" class="btn brand z-depth-1">
@@ -103,5 +100,6 @@
  			</form>		
  	</section>	
  
- </body>
+
+ 	<?php include('../templates/footer.php') ?> 
  </html>

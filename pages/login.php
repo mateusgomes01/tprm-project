@@ -1,6 +1,6 @@
 <?php 
 
-	include('config/db_connect.php');
+	include('../config/db_connect.php');
 
 	$email = $pass = "";
 	$erros = array('email'=>'', 'pass'=>'');
@@ -44,17 +44,20 @@
 
 
 			// create sql to insert the user in the correct table
-			$hashedPass = "SELECT pass FROM users WHERE email = '$email'";
+			$query = "SELECT pass FROM users WHERE email = '$email'";
 			//echo $title . $email . $ingredients;
 
 			// save to db and check
-			if( mysqli_query($conn, $sql) ){
+			if( $result = mysqli_query($conn, $query)){
+				// fetch result in array format
+				$arrayResult = mysqli_fetch_assoc($result);//fetches only one result
 				// success			
 				//echo 'form is valid';
-				//now we will check the password to see if it's valid			
-				if(password_verify($pass, $hashedPass)){
+				//now we will check the password to see if it's valid
+				$hashPass = $arrayResult['pass'];
+				if(password_verify($pass, $hashPass)){
 					//echo "password is valid!";
-					header('Location: index.php');//relocates ourselves in the index page
+					header('Location: ../index.php');//relocates ourselves in the index page ourselves in the index page
 				} else {
 					echo "password is invalid!";
 				}
@@ -70,10 +73,7 @@
 
  <!DOCTYPE html>
  <html>
- <head>
- 	<title> 	</title>
- </head>
- <body>
+ <?php include('../templates/header.php') ?>
  	<!--
  	an alternative form
 
@@ -89,12 +89,12 @@
 
 	<section class="container grey-text">
  		<h4 class="center">Login</h4>
- 			<form class="white" action="register.php" method="POST">
+ 			<form class="white" action="login.php" method="POST">
  				<label>Email:</label>
  				<input type="text" name="email" value="<?php echo htmlspecialchars($email) ?>">
  				<div class="red-text"> <?php echo $erros['email']  ?> </div>
  				<label>Password:</label>
- 				<input type="text" name="pass" value="<?php echo htmlspecialchars($pass) ?>">
+ 				<input type="password" name="pass" value="<?php echo htmlspecialchars($pass) ?>" autocomplete="off">
  				<div class="red-text"> <?php echo $erros['pass']  ?> </div>
  				<div class="center">
  					<input type="submit" name="submit" value="submit" class="btn brand z-depth-1">
@@ -102,5 +102,5 @@
  			</form>		
  	</section>	
  
- </body>
+ <?php include('../templates/footer.php') ?> 
  </html>
