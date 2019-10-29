@@ -8,3 +8,9 @@ https://www.openwall.com/articles/PHP-Users-Passwords
 
 PHP Brazil about password security:
 https://www.php.net/manual/pt_BR/faq.passwords.php
+
+The net ninja PHP tutorial: 
+https://www.youtube.com/playlist?list=PL4cUxeGkcC9gksOX3Kd9KPo-O68ncT05o
+
+XAMPP Download page:
+https://www.apachefriends.org/pt_br/index.html
