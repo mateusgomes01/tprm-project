@@ -33,3 +33,5 @@
  https://github.com/mateusgomes01/tprm-project
 
  By: Mateus Gomes de Melo
+
+ note: some features still are not implemented by 28/10/19. They will be added on later builds
