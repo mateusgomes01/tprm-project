@@ -2,7 +2,7 @@
 
 	include('../config/db_connect.php');
 
-	$email = $pass = "";
+	$email = $pass = $name = "";
 	$erros = array('email'=>'', 'pass'=>'');
 
 	//tries to catch the user login

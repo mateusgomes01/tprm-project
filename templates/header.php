@@ -1,3 +1,14 @@
+ <?php 
+
+    //the folowing if statement checks if we are at the clients or at the users page
+    /*
+    if(isset($users)){
+      $redirect = "register.php";
+    } else if(isset($clients)){
+      $redirect = "register.php";
+    }*/
+  ?>
+
  <head>
  	<title>TPRM</title>
  	<!-- Compiled and minified CSS -->
@@ -27,9 +38,16 @@
   <body class="grey lighten-4">
   	<nav class="white z-depth-1">
   		<div class="container">
-  			<a href="index.php" class="brand-logo brand-text center">TPRM</a>
-  			<ul id="nav-mobile" class="right hide-on-small-and-down">
-  				<li><a href="add.php" class="btn brand z-depth-1">Add a Pizza</a></li>
-  			</ul>
+  			<a href="login.php" class="brand-logo brand-text center">TPRM</a>
+        <!--<?php if(isset($users)){ ?>-->
+    			<ul id="nav-mobile" class="right hide-on-small-and-down">
+    				<li><a href="register.php" class="btn brand z-depth-1">Register</a></li>
+    			</ul>
+        <!--<?php } else if(isset($clients)){ ?>
+          <ul id="nav-mobile" class="right hide-on-small-and-down">
+            <li><a href="register.php" class="btn brand z-depth-1">Register</a></li>
+          </ul>
+        <?php } ?>-->
+
   		</div>
   	</nav>

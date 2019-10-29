@@ -2,8 +2,8 @@
 
 	include('../config/db_connect.php');
 
-	$email = $pass = "";
-	$erros = array('email'=>'', 'pass'=>'');
+	$email = $pass = $name = "";
+	$erros = array('name'=>'', 'email'=>'', 'pass'=>'');
 
 	//tries to catch the user login
 	if(isset($_POST['submit'])){
@@ -17,6 +17,19 @@
 			//filter_var checks if a value, first argument, is valid based on a filter, second argument
 			if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 				$erros['email'] = 'Email must be a valid email address';
+			}
+		}
+
+		//check name
+		if(empty($_POST['name'])){
+			$erros['name'] = 'An name is required <br />';
+		} else {
+			//echo htmlspecialchars($_POST['title']);
+			$name = $_POST['name'];
+			//first parameter is a regex that we want the secont parameter to comply
+			//this regex expression is valid if the variable has characters among regular letters(a-z), capital letters(A-Z) and spaces(\s)
+			if(!preg_match('/^[a-zA-Z\s]+$/', $name)){
+				$erros['name'] = 'Title must be letters and spaces only';
 			}
 		}
 
@@ -47,19 +60,20 @@
 			//$pass = mysqli_real_escape_string($conn, $_POST['pass']);
 
 			//mysqli_real_escape_string avoids malicious SQL code to be executed, just like htmlspecialchars()
+			$name = mysqli_real_escape_string($conn, $name);
 			$email = mysqli_real_escape_string($conn, $email);
 			$hashedPass = mysqli_real_escape_string($conn, $hashedPass);
 
 
 			// create sql to insert the user in the correct table
-			$sql = "INSERT INTO users(email,pass) VALUES('$email', '$hashedPass')";
+			$sql = "INSERT INTO users(name,email,pass) VALUES('$name', '$email', '$hashedPass')";
 			//echo $title . $email . $ingredients;
 
 			// save to db and check
 			if( mysqli_query($conn, $sql) ){
 				// success			
 				//echo 'form is valid';
-				header('Location: login.php');//relocates ourselves in the index page
+				header('Location: users.php');//relocates ourselves in the users page
 			} else {
 				//error
 				echo 'query error ' . mysqli_error($conn);
@@ -88,6 +102,9 @@
 	<section class="container grey-text">
  		<h4 class="center">Create a new account</h4>
  			<form class="white" action="register.php" method="POST">
+ 				<label>Name:</label>
+ 				<input type="text" name="name" value="<?php echo htmlspecialchars($name) ?>">
+ 				<div class="red-text"> <?php echo $erros['name']  ?> </div>
  				<label>Email:</label>
  				<input type="text" name="email" value="<?php echo htmlspecialchars($email) ?>">
  				<div class="red-text"> <?php echo $erros['email']  ?> </div>
