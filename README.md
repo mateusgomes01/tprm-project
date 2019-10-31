@@ -5,6 +5,7 @@
 
  You will also have to update the index.php file on the htdocs folder with the following PHP code:
 
+ ```
  <?php
 	if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
 		$uri = 'https://';
@@ -16,6 +17,7 @@
 	exit;
  ?>
  Something is wrong with the XAMPP installation :-(
+ ```
 
  after that, just open yout browser at http://localhost/.
 
