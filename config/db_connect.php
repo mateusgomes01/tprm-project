@@ -2,7 +2,7 @@
 
 	// MySQLi or PDO - MySQL improved or PHP Data Objects
 	//connect to database
-	$conn = mysqli_connect('localhost','shaun','test1234','tprm');
+	$conn = mysqli_connect('localhost','root','','tprm');
 
 	//echo $id_to_delete;
 
