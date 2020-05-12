@@ -46,13 +46,13 @@
 			*/
 			//now we will hash the password so that the user privacy is preserverd
 			$hashedPass = password_hash($pass, PASSWORD_DEFAULT);// PASSWORD_BCRYPT can also be used for more security
-
 		}
 
 		//array filter checks for a callback function in the array. If all elements in the array are empty/false, array_filter will return false
 		//if the array is filled, it will evaluete to true
 		if(array_filter($erros)){
 			//echo 'there are errors in the form';
+			echo 'Errors found in the form';
 		} else {
 			
 			//mysqli_real_escape_string avoids malicious SQL code to be executed, just like htmlspecialchars()
